@@ -5,7 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To-Do List</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: rgb(240, 240, 240);
+      display: flex;
+      justify-content: center;
+      margin-top: 200px;
+    }
+
+    .container {
+      width: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      border: 1px solid rgb(255, 255, 255);
+    }
+
+    form {
+      display: flex;
+      gap: 5px;
+    }
+
+    li {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      list-style: none;
+      border-bottom: 1px solid black;
+    }
+
+    li.checked span {
+      text-decoration: line-through;
+    }
+  </style>
 </head>
 
 <body>
@@ -18,7 +53,44 @@
     <ul id="items"></ul>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const itemInput = document.querySelector("input[type='text']");
+    const form = document.querySelector("form");
+    const itemList = document.querySelector("#items");
+
+    form.addEventListener("submit", addItem);
+
+    function addItem(e) {
+      e.preventDefault();
+
+      let newItem = itemInput.value;
+      let li = document.createElement("li");
+
+      let span = document.createElement("span");
+      span.appendChild(document.createTextNode(newItem));
+      li.appendChild(span);
+
+      let deleteBtn = document.createElement("button");
+      deleteBtn.innerHTML = "Remove";
+
+      deleteBtn.addEventListener("click", function () {
+        itemList.removeChild(li);
+      });
+
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+
+      checkbox.addEventListener("change", function () {
+        li.classList.toggle("checked");
+      });
+
+      li.appendChild(checkbox);
+      li.appendChild(deleteBtn);
+
+      itemList.appendChild(li);
+      itemInput.value = "";
+    }
+  </script>
 </body>
 
 </html>
