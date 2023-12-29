@@ -1,0 +1,32 @@
+body {
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+.container {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+form {
+  display: flex;
+  gap: 5px;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+li {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  list-style: none;
+  border-bottom: 1px solid black;
+}
